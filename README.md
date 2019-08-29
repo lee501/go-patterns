@@ -1,4 +1,4 @@
-####Golang 设计模式
+Golang 设计模式
 
 ----
 - [创建者模式(Builder Pattern)](./01-builder-patterns/builder.go)
