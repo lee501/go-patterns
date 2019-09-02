@@ -7,7 +7,7 @@ import "fmt"
 	*核心思想
 		1.对象结构体
 		2.类型为结构体指针的channel
-		3.New方法
+		3.New方法, 创建新的对象放到channel中
 */
 type Object struct {
 	Name string
