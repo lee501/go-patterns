@@ -1,5 +1,6 @@
 package observer
 
+import "fmt"
 
 /*
 	allow an instance to publish events to other observers when a particular evert occur
@@ -18,7 +19,7 @@ type Event struct {
 }
 //设计观察者和被观察者接口
 type Observer interface {
-	Update()
+	Receive(event Event)
 }
 
 type Notifier interface {
@@ -29,15 +30,48 @@ type Notifier interface {
 
 //通过具体对象来实现接口
 //投资人观察者
-type ConcreteInvestor struct {
+type InvestorObserver struct {
 	Name string
 }
 
-func (invester *ConcreteInvestor) Update() {
-
+func (invester *InvestorObserver) Receive(event Event) {
+	fmt.Printf("%s 收到事件通知 %s\n", invester.Name, event.Info)
 }
 //股票被观察者
-type ConcreteShare struct {
+type ShareNotifier struct {
 	Price float64
 	oblist []Observer //注册链表
+}
+
+func (share *ShareNotifier) Register(observer Observer) {
+	share.oblist = append(share.oblist, observer)
+}
+//移除观察者
+func (share *ShareNotifier) Remove(observer Observer) {
+	if len(share.oblist) == 0 {
+		return
+	}
+	for i, ob := range share.oblist {
+		if ob == observer {
+			share.oblist = append(share.oblist[:i], share.oblist[i+1:]...)
+		}
+	}
+}
+
+func (share *ShareNotifier) Notify(event Event) {
+	for _, ob := range share.oblist {
+		ob.Receive(event)
+	}
+}
+
+func NewEvent() Event {
+	return Event{Info: "价格变动通知"}
+}
+
+func NewInvestorObserver(name string) *InvestorObserver {
+	return &InvestorObserver{Name: name}
+}
+
+func NewShareNotifier(price float64) *ShareNotifier {
+	return &ShareNotifier{Price: price}
 }
