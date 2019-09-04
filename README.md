@@ -40,8 +40,6 @@ Golang设计模式思想
         用原型实例指定创建对象的种类, 并且通过拷贝这个原型来创建新的对象
     State(状态模式): 
     	允许一个对象在其内部状态改变时改变它的行为, 对象看起来似乎修改了它所属的类
-    Strategy(策略模式): 
-    	定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换, 本模式使得算法的变化可独立于使用它的客户
     Template Method(模板方法模式): 
     	定义一个操作中的算法的骨架, 而将一些步骤延迟到子类中, 
         Template Method使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤
@@ -52,25 +50,29 @@ Golang设计模式思想
 
 创建模式
 ----
-- [建造者模式(Builder Pattern)](./01-builder-patterns/builder.go)
+- [建造者模式(Builder Pattern)](./01-builder-patterns)
     -     将一个复杂对象的构建与它的表示分离, 使得同样的构建过程可以创建不同的表示
-- [工厂方法模式(Factory Method)](./02-factory-patterns/factory_method.go)
+- [工厂方法模式(Factory Method)](./02-factory-patterns)
     -     使一个类的实例化延迟到其子类, 定义一个用于创建对象的接口, 让子类决定将哪一个类实例化
-- [对象池模式(Object Pool)](./03-object-pool-pattern/object_pool.go)
+- [对象池模式(Object Pool)](./03-object-pool-pattern)
     -     根据需求将预测的对象保存到channel中， 用于对象的生成成本大于维持成本
-- [单类模式(singleton)](./04-singleton-pattern/singleton.go)
+- [单类模式(singleton)](./04-singleton-pattern)
     -     单例模式是最简单的设计模式之一, 保证一个类仅有一个实例, 并提供一个全局的访问接口
 结构模式
 ----
-- [装饰模式(decorator)](./05-decorator-pattern/decorator.go)
+- [装饰模式(decorator)](./05-decorator-pattern)
     -     装饰模式使用对象组合的方式动态改变或增加对象行为， 在原对象的基础上增加功能
-- [代理模式(proxy)](./06-proxy-pattern/proxy.go)
+- [代理模式(proxy)](./06-proxy-pattern)
     -     代理模式用于延迟处理操作或者在进行实际操作前后对真实对象进行其它处理。
 
 行为模式
 ----
-- [观察者模式(Observer)](./07-observer-pattern/observer.go)
+- [观察者模式(Observer)](./07-observer-pattern)
     -     定义对象间的一种一对多的依赖关系,以便当一个对象的状态发生改变时,所有依赖于它的对象都得到通知并自动刷新
-- [策略模式(Strategy)](./08-strategy-pattern/strategy.go)
+- [策略模式(Strategy)](./08-strategy-pattern)
     -     定义一系列算法，让这些算法在运行时可以互换，使得分离算法，符合开闭原则
 
+同步模式(synchronization patterns)
+----
+- [信号量模式(Semaphore)](./09-semaphore-pattern)
+    -       信号量是一种同步模式，对有限数量的资源同步互斥
