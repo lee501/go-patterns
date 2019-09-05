@@ -16,6 +16,17 @@ func main() {
 	}
 	fmt.Println("jie")
 
-	var m struct{}
-	m = P{}
+	//type sem chan struct{}
+	s := make(chan struct{}, 1)
+	select {
+	case s <- struct{}{}:
+		fmt.Println("struct")
+	}
+
+	type sem chan struct{}
+	m := make(sem, 1)
+	select {
+	case m <- struct{}{}:
+		fmt.Println("struct1")
+	}
 }
