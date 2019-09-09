@@ -4,7 +4,7 @@ import "fmt"
 
 /*
 	allow an instance to publish events to other observers when a particular evert occur
-	核心思想
+	设计思想
 		1. Event struct
 		2. Observer interface
 			OnNotify(Event) 处理事件

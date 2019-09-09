@@ -4,7 +4,7 @@ import "errors"
 
 /*
 	factory method design pattern will create object with the exact type
-	核心思路：
+	设计思想：
 		*类型常量
 		*接口factory
 		*生成函数

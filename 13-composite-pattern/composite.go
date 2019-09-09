@@ -3,7 +3,7 @@ package composite
 import "fmt"
 
 /*
-	核心思想：
+	设计思想：
 		struct不依赖interface
 		1. 包含角色：
 			1). 共同的接口MenuComponent，为root和leaf结构体共有的方法

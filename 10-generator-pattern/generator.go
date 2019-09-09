@@ -1,7 +1,7 @@
 package generator
 
 /*
-	核心思想：
+	设计思想：
 		相当于yield功能
 		函数返回一个只读的 <-chan
 		在函数内部开一个goruntine并发生成值放入chan中

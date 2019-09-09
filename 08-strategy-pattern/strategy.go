@@ -1,7 +1,7 @@
 package strategy
 
 /*
-	核心思想：
+	设计思想：
 		1. 一个Operator接口
 		2. 属性为Operator接口的struct
 		3. 实现结构体的自身的方法

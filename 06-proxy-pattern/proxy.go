@@ -4,7 +4,7 @@ import "fmt"
 
 /*
 	proxy pattern provide object control access to another object, intercepting all calls
-	//核心思想
+	//设计思想
 		1. 代理inteface
 		2. 真实对象Object struct
 		3. 代理对象ProxyObject struct，属性为Object, 拦截所有的action

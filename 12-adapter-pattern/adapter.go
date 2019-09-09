@@ -3,7 +3,7 @@ package adapter
 import "fmt"
 
 /*
-	technological process思想:
+	设计思想:
 		1.目标接口（示例中的Player）
 		2.被适配者
 		3.核心是通过适配器Adapter转换为目标接口（组合的方式包含被适配者）

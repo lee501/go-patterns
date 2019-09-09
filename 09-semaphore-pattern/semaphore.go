@@ -6,7 +6,7 @@ import (
 )
 
 /*
-	核心思想：
+	设计思想：
 		1.type interface 包含Acquire和release行为
 		2.定义结构体， 包含chan 和过期时间属性
 		3. 在Acquire中实现channel读入
