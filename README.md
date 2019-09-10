@@ -20,7 +20,8 @@ Golang设计模式思想
     -     生成器模式可以允许使用者在生成要使用的下一个值时与生成器并行运行
 - [抽象工厂(Abstract Factory)](./11-abstract-factory)
     -     提供一个创建一系列相关或相互依赖对象的接口, 而无需指定它们具体的类
-- [原型模式(Prototype Pattern)]
+- [原型模式(Prototype Pattern)](./16-prototype-pattern)
+    -     复制一个存在的实例
 
 结构模式
 ----
