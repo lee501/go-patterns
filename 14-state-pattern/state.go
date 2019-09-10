@@ -8,7 +8,7 @@ import "fmt"
 		State: 封装特定状态行为的interface
 		ConcreteState: 具体的状态，继承接口State，不同的状态执行Context的不同行为
 */
-//帐号状态示例
+//context对象
 type Context struct {
 	State 		ActionState
 	HealthValue int

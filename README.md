@@ -21,7 +21,7 @@ Golang设计模式思想
 - [抽象工厂(Abstract Factory)](./11-abstract-factory)
     -     提供一个创建一系列相关或相互依赖对象的接口, 而无需指定它们具体的类
 - [原型模式(Prototype Pattern)](./16-prototype-pattern)
-    -     复制一个存在的实例
+    -     复制一个已存在的实例
 
 结构模式
 ----
@@ -33,7 +33,8 @@ Golang设计模式思想
     -     将一个类的接口转换成客户希望的另外一个接口。适配器模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作
 - [组合模式(Composite)](./13-composite-pattern)
     -     组合模式有助于表达数据结构, 将对象组合成树形结构以表示"部分-整体"的层次结构, 常用于树状的结构
-- [享元模式(Flyweight Pattern)]
+- [享元模式(Flyweight Pattern)](./17-flyweight-pattern)
+    -     把多个实例对象共同需要的数据，独立出一个享元，从而减少对象数量和节省内存
 - [外观模式(Facade Pattern)]  
 - [桥接模式(Bridge Pattern)]  
     

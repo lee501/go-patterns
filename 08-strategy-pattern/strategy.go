@@ -12,6 +12,7 @@ type Operator interface {
 	Apply(int, int) int
 }
 
+//包装器
 type Operation struct {
 	operator Operator
 }
