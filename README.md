@@ -51,7 +51,8 @@ Golang设计模式思想
 - [模板方法模式(Template Method Pattern)]
 - [备忘录模式(Memento Pattern)]
 - [中介模式(Mediator Pattern)]
-- [迭代器模式(Iterator Pattern)]
+- [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
+    -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
 - [解释器模式(Interpreter Pattern)]
 - [命令模式(Command Pattern)]
 - [职责链模式(Chain of Responsibility)]
