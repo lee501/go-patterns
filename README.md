@@ -2,7 +2,7 @@ Golang设计模式思想
 -----
 * 前言
     *   一切设计模式都是灵活应用struct的组合模式，以及go隐形继承接口的特性
-    *   go中的interface就是一些方法装饰, 而struct并不依赖与接口
+    *   go中的interface就是一些方法装饰, 而struct并不依赖于接口
 
 * 设计模式类型
   
