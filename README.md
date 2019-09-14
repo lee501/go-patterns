@@ -49,7 +49,8 @@ Golang设计模式思想
     -     用于系统中复杂对象的状态转换以及不同状态下行为的封装问题
 - [访问者模式(Visitor Pattern)](./15-visitor-pattern)
     -     访问者模式是将对象的数据和操作分离
-- [模板方法模式(Template Method Pattern)]
+- [模板方法模式(Template Method Pattern)](./20-template-method-pattern)
+    -     模版方法使用匿名组合的继承机制, 将通用的方法和属性放在父类中, 具体的实现放在子类中延迟执行
 - [备忘录模式(Memento Pattern)]
 - [中介模式(Mediator Pattern)]
 - [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
