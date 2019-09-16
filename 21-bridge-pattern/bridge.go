@@ -3,6 +3,7 @@ package bridge
 import "fmt"
 
 /*
+	分离抽象部分和实现部分
 	设计思想：
 		1. 一个桥接接口Interface以及实现该接口的具体struct
 		2. 一个属性为桥接接口的struct Shape（抽象部分， 1，3为具体部分）

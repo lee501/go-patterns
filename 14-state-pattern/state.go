@@ -3,12 +3,13 @@ package state
 import "fmt"
 
 /*
+	状态模式的关键是各个状态子类必须知道下一个状态是什么，且要把逻辑判断转移到各个状态子类中，客户端不需要了解状态迁移的顺序
 	设计思想：
 		Context: 拥有多种状态的对象(struct), 状态属性为State
 		State: 封装特定状态行为的interface
 		ConcreteState: 具体的状态，继承接口State，不同的状态执行Context的不同行为
 */
-//context对象
+//context对象，根据HealthValue的不同值设置不同状态
 type Context struct {
 	State 		ActionState
 	HealthValue int
@@ -39,7 +40,7 @@ func (a *Context) changestate() {
 		a.State = &RestrictedState{}
 	}
 }
-
+//简单工厂方式创建
 func NewContext(health int) *Context {
 	con := &Context{HealthValue: health}
 	con.changestate()

@@ -16,9 +16,9 @@ Golang设计模式思想
     -     根据需求将预测的对象保存到channel中， 用于对象的生成成本大于维持成本
 - [单类模式(singleton)](./04-singleton-pattern)
     -     单例模式是最简单的设计模式之一, 保证一个类仅有一个实例, 并提供一个全局的访问接口
-- [生成器(Generator)](./10-generator-pattern)
+- [生成器模式(Generator)](./10-generator-pattern)
     -     生成器模式可以允许使用者在生成要使用的下一个值时与生成器并行运行
-- [抽象工厂(Abstract Factory)](./11-abstract-factory)
+- [抽象工厂模式(Abstract Factory)](./11-abstract-factory)
     -     提供一个创建一系列相关或相互依赖对象的接口, 而无需指定它们具体的类
 - [原型模式(Prototype Pattern)](./16-prototype-pattern)
     -     复制一个已存在的实例
@@ -58,7 +58,8 @@ Golang设计模式思想
     -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
 - [解释器模式(Interpreter Pattern)]
 - [命令模式(Command Pattern)]
-- [职责链模式(Chain of Responsibility)]
+- [责任链模式(Chain of Responsibility)](./22-chain-of-responsibility-pattern)
+    -     责任链模式是将处理请求的多个对象连成一条链(类似队列)，每个对象都包含下一个对象的引用，请求沿着链传递，直到被处理
 
 同步模式(synchronization patterns)
 ----
