@@ -10,7 +10,7 @@ Golang设计模式思想
 ----
 - [建造者模式(Builder Pattern)](./01-builder-patterns)
     -     将一个复杂对象的构建与它的表示分离, 使得同样的构建过程可以创建不同的表示
-- [工厂方法模式(Factory Method)](./02-factory-patterns)
+- [工厂方法模式(Factory Method)](./02-factory-method-patterns)
     -     使一个类的实例化延迟到其子类, 定义一个用于创建对象的接口, 让子类决定将哪一个类实例化
 - [对象池模式(Object Pool)](./03-object-pool-pattern)
     -     根据需求将预测的对象保存到channel中， 用于对象的生成成本大于维持成本
