@@ -52,7 +52,8 @@ Golang设计模式思想
     -     访问者模式是将对象的数据和操作分离
 - [模板方法模式(Template Method Pattern)](./20-template-method-pattern)
     -     模版方法使用匿名组合的继承机制, 将通用的方法和属性放在父类中, 具体的实现放在子类中延迟执行
-- [备忘录模式(Memento Pattern)]
+- [备忘录模式(Memento Pattern)](./24-memento-pattern)
+    -    备忘录模式捕获一个对象的内部状态，并在对象之外保存这个状态
 - [中介模式(Mediator Pattern)]
 - [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
     -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
