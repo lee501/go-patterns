@@ -57,7 +57,8 @@ Golang设计模式思想
 - [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
     -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
 - [解释器模式(Interpreter Pattern)]
-- [命令模式(Command Pattern)]
+- [命令模式(Command Pattern)](./23-command-pattern)
+    -     命令模式是一种数据驱动模式，将请求封装成一个对象，从而可以用不同的请求对客户进行参数化，实现调用者和接收者的解藕
 - [责任链模式(Chain of Responsibility)](./22-chain-of-responsibility-pattern)
     -     责任链模式是将处理请求的多个对象连成一条链(类似队列)，每个对象都包含下一个对象的引用，请求沿着链传递，直到被处理
 

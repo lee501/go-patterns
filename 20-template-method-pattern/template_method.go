@@ -39,7 +39,7 @@ func (p *Person) Exit() {
 type Boy struct {
 	Person //匿名组合实现继承
 }
-
+//重写BeforeAction
 func (b *Boy) BeforeAction() {
 	fmt.Println(b.name)
 }
