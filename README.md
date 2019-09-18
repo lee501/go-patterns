@@ -58,7 +58,8 @@ Golang设计模式思想
     -     中介者模式用一个中介对象来封装一系列对象交互，将多对多关联转换成一对多，构成星状结构
 - [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
     -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
-- [解释器模式(Interpreter Pattern)]
+- [解释器模式(Interpreter Pattern)](./26-interpreter-pattern)
+    -     解释器模式实现一个表达式接口，该接口解释一个特定的上下文。通常用于SQL解析和符号处理引擎
 - [命令模式(Command Pattern)](./23-command-pattern)
     -     命令模式是一种数据驱动模式，将请求封装成一个对象，从而可以用不同的请求对客户进行参数化，实现调用者和接收者的解藕
 - [责任链模式(Chain of Responsibility)](./22-chain-of-responsibility-pattern)
