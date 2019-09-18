@@ -53,8 +53,9 @@ Golang设计模式思想
 - [模板方法模式(Template Method Pattern)](./20-template-method-pattern)
     -     模版方法使用匿名组合的继承机制, 将通用的方法和属性放在父类中, 具体的实现放在子类中延迟执行
 - [备忘录模式(Memento Pattern)](./24-memento-pattern)
-    -    备忘录模式捕获一个对象的内部状态，并在对象之外保存这个状态
-- [中介模式(Mediator Pattern)]
+    -     备忘录模式捕获一个对象的内部状态，并在对象之外保存这个状态
+- [中介模式(Mediator Pattern)](./25-mediator-pattern)
+    -     中介者模式用一个中介对象来封装一系列对象交互，将多对多关联转换成一对多，构成星状结构
 - [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
     -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
 - [解释器模式(Interpreter Pattern)]
