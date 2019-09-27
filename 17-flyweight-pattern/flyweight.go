@@ -1,6 +1,7 @@
 package flyweight
 
 /*
+	享元模式核心是创建一个map属性的结构体
 	设计思想:
 		1. 创建Shape接口
 		2. 创建实现接口Shape的实体struct Circle
