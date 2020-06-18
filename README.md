@@ -69,8 +69,8 @@ Golang设计模式思想
 ----
 - [信号量模式(Semaphore)](./09-semaphore-pattern)
     -       信号量是一种同步模式，对有限数量的资源同步互斥
-
+- [发布订阅模式(publish-subscribe)](./27-publish-and-subscribe)
+    -       有别于传统的生产者消费者，pubsub模型将消费发布给一个主题
 附录(设计模式彩图)
 -
-
    ![设计模式彩图](./go-design-image.jpg)
