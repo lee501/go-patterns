@@ -14,7 +14,7 @@ Golang设计模式思想
     -     使一个类的实例化延迟到其子类, 定义一个用于创建对象的接口, 让子类决定将哪一个类实例化
 - [对象池模式(Object Pool)](./03-object-pool-pattern)
     -     根据需求将预测的对象保存到channel中， 用于对象的生成成本大于维持成本
-- [单类模式(singleton)](./04-singleton-pattern)
+- [单例模式(singleton)](./04-singleton-pattern)
     -     单例模式是最简单的设计模式之一, 保证一个类仅有一个实例, 并提供一个全局的访问接口
 - [生成器模式(Generator)](./10-generator-pattern)
     -     生成器模式可以允许使用者在生成要使用的下一个值时与生成器并行运行
@@ -74,3 +74,4 @@ Golang设计模式思想
 附录(设计模式彩图)
 -
    ![设计模式彩图](./go-design-image.jpg)
+
