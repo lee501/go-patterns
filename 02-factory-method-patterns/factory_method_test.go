@@ -30,9 +30,11 @@ func TestCashPay_Pay(t *testing.T) {
 	payment, _ := GeneratePayment(1, balance)
 	payment.Pay(20)
 	//cash := reflect.New(reflect.TypeOf(payment).Elem()).Interface().(*CashPay)relect新的对象
-	cash := payment.(*CashPay)
-	fmt.Println(reflect.TypeOf(cash))
-	if cash.Balance != float32(80) {
-		t.Error("结算错误")
+	fmt.Println("reflect interface", reflect.ValueOf(payment).Interface().(*CashPay))
+	if cash, ok := payment.(*CashPay); ok {
+		fmt.Println(reflect.TypeOf(cash))
+		if cash.Balance != float32(80) {
+			t.Error("结算错误")
+		}
 	}
 }
