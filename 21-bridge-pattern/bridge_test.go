@@ -4,14 +4,14 @@ import "testing"
 
 func TestCpu_Run(t *testing.T) {
 	cpu := &Cpu{}
-	phone := new(Phone)
-	phone.SetShape(cpu)
-	phone.Print()
+	apple := new(Apple)
+	apple.SetShape(cpu)
+	apple.Print()
 }
 
 func TestStorage_Run(t *testing.T) {
 	storage := &Storage{}
-	phone := new(Phone)
-	phone.SetShape(storage)
-	phone.Print()
+	hw := new(HuaWei)
+	hw.SetShape(storage)
+	hw.Print()
 }

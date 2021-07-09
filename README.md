@@ -10,11 +10,11 @@ Golang设计模式思想
 ----
 - [建造者模式(Builder Pattern)](./01-builder-patterns)
     -     将一个复杂对象的构建与它的表示分离, 使得同样的构建过程可以创建不同的表示
-- [工厂方法模式(Factory Method)](./02-factory-patterns)
+- [工厂方法模式(Factory Method)](./02-factory-method-patterns)
     -     使一个类的实例化延迟到其子类, 定义一个用于创建对象的接口, 让子类决定将哪一个类实例化
 - [对象池模式(Object Pool)](./03-object-pool-pattern)
     -     根据需求将预测的对象保存到channel中， 用于对象的生成成本大于维持成本
-- [单类模式(singleton)](./04-singleton-pattern)
+- [单例模式(singleton)](./04-singleton-pattern)
     -     单例模式是最简单的设计模式之一, 保证一个类仅有一个实例, 并提供一个全局的访问接口
 - [生成器模式(Generator)](./10-generator-pattern)
     -     生成器模式可以允许使用者在生成要使用的下一个值时与生成器并行运行
@@ -52,12 +52,16 @@ Golang设计模式思想
     -     访问者模式是将对象的数据和操作分离
 - [模板方法模式(Template Method Pattern)](./20-template-method-pattern)
     -     模版方法使用匿名组合的继承机制, 将通用的方法和属性放在父类中, 具体的实现放在子类中延迟执行
-- [备忘录模式(Memento Pattern)]
-- [中介模式(Mediator Pattern)]
+- [备忘录模式(Memento Pattern)](./24-memento-pattern)
+    -     备忘录模式捕获一个对象的内部状态，并在对象之外保存这个状态
+- [中介模式(Mediator Pattern)](./25-mediator-pattern)
+    -     中介者模式用一个中介对象来封装一系列对象交互，将多对多关联转换成一对多，构成星状结构
 - [迭代器模式(Iterator Pattern)](./18-iterator-pattern)
     -     可以配合访问者模式，将不同的数据结构，使用迭代器遍历
-- [解释器模式(Interpreter Pattern)]
-- [命令模式(Command Pattern)]
+- [解释器模式(Interpreter Pattern)](./26-interpreter-pattern)
+    -     解释器模式实现一个表达式接口，该接口解释一个特定的上下文。通常用于SQL解析和符号处理引擎
+- [命令模式(Command Pattern)](./23-command-pattern)
+    -     命令模式是一种数据驱动模式，将请求封装成一个对象，从而可以用不同的请求对客户进行参数化，实现调用者和接收者的解藕
 - [责任链模式(Chain of Responsibility)](./22-chain-of-responsibility-pattern)
     -     责任链模式是将处理请求的多个对象连成一条链(类似队列)，每个对象都包含下一个对象的引用，请求沿着链传递，直到被处理
 
@@ -65,3 +69,9 @@ Golang设计模式思想
 ----
 - [信号量模式(Semaphore)](./09-semaphore-pattern)
     -       信号量是一种同步模式，对有限数量的资源同步互斥
+- [发布订阅模式(publish-subscribe)](./27-publish-and-subscribe)
+    -       有别于传统的生产者消费者，pubsub模型将消费发布给一个主题
+附录(设计模式彩图)
+-
+   ![设计模式彩图](./go-design-image.jpg)
+

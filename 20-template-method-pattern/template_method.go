@@ -3,6 +3,7 @@ package template
 import "fmt"
 
 /*
+	模版方法的核心是父结构体包含接口的引用，同时子类匿名组合父类实现接口继承
 	设计思想:
 		1. 定义一个接口Shape
 		2. 实现父struct, 并接口继承Shape, 同时fu类中包含子类引用，用来调用子类的方法
@@ -39,7 +40,7 @@ func (p *Person) Exit() {
 type Boy struct {
 	Person //匿名组合实现继承
 }
-
+//重写BeforeAction
 func (b *Boy) BeforeAction() {
 	fmt.Println(b.name)
 }
