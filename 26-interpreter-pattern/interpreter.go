@@ -8,6 +8,13 @@ import "strings"
 		2. 具体的表达式类 ConcreteExpression struct
 		3. 上下文类 Context struct
 */
+
+type Exp int
+
+const (
+	Equ = iota
+	Cont
+)
 /*创建Expression*/
 type Expression interface {
 	Interpret() bool
@@ -21,8 +28,7 @@ type Context struct {
 func (con *Context) GetVal() string {
 	return con.val
 }
-/*创建ConcreteExpression*/
-//Equal表达式类
+//Equal表达式类 implements expression
 type Equal struct {
 	left Context
 	right Context
@@ -32,7 +38,7 @@ func (e *Equal) Interpret() bool {
 	return e.left.GetVal() == e.right.GetVal()
 }
 
-//Contain表达式类
+//Contain表达式类, implements expression
 type Contain struct {
 	left Context
 	right Context
@@ -42,14 +48,14 @@ func (con *Contain) Interpret() bool {
 	return strings.Contains(con.left.GetVal(), con.right.GetVal())
 }
 
-func CreateExpression(kind string, left, right Context) Expression {
-	switch kind {
-	case "equal":
+func CreateExpression(exp Exp, left, right Context) Expression {
+	switch exp {
+	case Equ:
 		return &Equal{
 			left: left,
 			right: right,
 		}
-	case "contain":
+	case Cont:
 		return &Contain{
 			left: left,
 			right: right,
