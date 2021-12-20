@@ -6,7 +6,7 @@ import "fmt"
 	命令模式是一种数据驱动模式，将请求封装成一个对象，从而可以用不同的请求对客户进行参数化，实现调用者和接收者的解藕
 	设计思想：
 		*接收者(Receiver): 执行请求相关的操作Execute()
-		*调用者(Invoker):
+		*请求对象(Invoker):
 		*命令接口(Command)
 		*具体命令的结构体(ConcreteCommand)
 	Invoker负责维护Command队列
@@ -36,7 +36,7 @@ func (b *ReceiverB) Execute() {
 type Command interface {
 	Call()
 }
-//创建具体command struct
+//创建具体command, 指定接收者
 type ConcreteCommandA struct {
 	Receiver
 }
@@ -52,24 +52,24 @@ func (cb *ConcreteCommandB) Call() {
 }
 
 
-/*创建调用者， 实现添加，执行命令*/
+/*创建请求对象， 维护请求cmd*/
 type Invoker struct {
-	list []Command
+	cmds []Command
 }
 
 func (in *Invoker) AddCommand(c Command) {
 	if in == nil {
 		return
 	}
-	in.list = append(in.list, c)
+	in.cmds = append(in.list, c)
 }
 
 func (in *Invoker) ExecuteCommand() {
-	if in  == nil || len(in.list) == 0 {
+	if in  == nil || len(in.cmds) == 0 {
 		return
 	}
-	for _, item := range in.list {
-		item.Call()
+	for _, cmd := range in.cmds {
+		cmd.Call()
 	}
 }
 
