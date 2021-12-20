@@ -11,6 +11,12 @@ import "fmt"
 		*具体命令的结构体(ConcreteCommand)
 	Invoker负责维护Command队列
 	ConcreteCommand匿名组合Receiver
+	
+	协作过程：
+		1.创建一个ConcreteCommand对象并指定它的Receiver对象
+		2.某Invoker对象存储该ConcreteCommand对象
+		3.该Invoker通过调用Command的Excute操作来提交一个请求。
+		4.具体的ConcreteCommand对象对调用它的Receiver的一些操作以执行该请求
 */
 /*创建Receiver, 这里使用接口，为了实现多个receiver。(可以创建Receiver struct)*/
 type Receiver interface {
