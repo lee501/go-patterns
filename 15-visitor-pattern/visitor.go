@@ -1,66 +1,72 @@
 package visitor
 
-import "fmt"
+import (
+	"fmt"
+	"url"
+	"io"
+)
 
-/*	根据外部环境更改这个类所能执行的行为, 传入不同的visitor，输出不同的行为
+/*	允许一个或者多个操作应用到对象上，解耦操作和对象本身
+		表面：某个对象执行了一个方法
+		内部：对象内部调用了多个方法，最后统一返回结果
 	设计思路：
-		1. Visitor interface
-		2. ConcreteVisitor struct
-		3. Element interface(accept Visitor)
-		4. ConcreteElement struct
-		5. ElementContainer（包含Element list）非必须
+		1. 对象Visitor interface
+		2. Vistor对应的操作VisitorFunc 
+		3. 封装多个vistor []Visitor为统一的一个
 */
+type Info struct {
+	// Namespace will be set if the object is namespaced and has a specified value.
+	Namespace string
+	Name      string
+	/*
+	...
+	*/
+}
 //visitor 接口
 type Visitor interface {
-	Visit()
+	Visit(VisitorFunc) error
 }
-//具体Visitor对象
-type ConcreteVisitorA struct {
-	Name string
-}
+// VisitorFunc对应这个对象的方法，也就是定义中的“操作”
+type VisitorFunc func(*Info, error) error
 
-func (conV *ConcreteVisitorA) Visit() {
-	fmt.Println("this is visitor A")
-}
+//将多个[]Visitor封装为一个Visitor
+type EagerVisitorList []Visitor
 
-//Visitor B
-type ConcreteVisitorB struct {
-	Name string
-}
-func (conV *ConcreteVisitorB) Visit() {
-	fmt.Println("this is visitor B")
-}
-
-//创建元素接口
-type Element interface {
-	Accept(visitor Visitor)
-}
-
-//元素对象
-type ElementA struct {}
-
-func (e *ElementA) Accept(visitor Visitor)  {
-	visitor.Visit()
-}
-
-//Element容器
-type ElementContainer struct {
-	list []Element
-}
-
-//实现容器的元素的添加和移除
-func (container *ElementContainer) Add(element Element)  {
-	if container == nil || element == nil {
-		return
-	}
-	container.list = append(container.list, element)
-}
-
-func (container *ElementContainer) Delete(element Element) {
-	for i, val := range container.list {
-		if val == element {
-			container.list = append(container.list[:i], container.list[i+1:]...)
-			break
+// 返回的错误暂存到[]error中，统一聚合
+func (l EagerVisitorList) Visit(fn VisitorFunc) error {
+	errs := []error(nil)
+	for i := range l {
+		if err := l[i].Visit(func(info *Info, err error) error {
+			if err != nil {
+				errs = append(errs, err)
+				return nil
+			}
+			if err := fn(info, nil); err != nil {
+				errs = append(errs, err)
+			}
+			return nil
+		}); err != nil {
+			errs = append(errs, err)
 		}
 	}
+	return utilerrors.NewAggregate(errs)
 }
+
+type StreamVisitor struct {
+  // 读取信息的来源，实现了Read这个接口，这个"流式"的概念，包括了常见的HTTP、文件、标准输入等各类输入
+	io.Reader
+	//*mapper
+
+	Source string
+	//Schema ContentValidator
+}
+func (s *StreamVisitor) Visit(fn VisitorFunc) error {}
+// url visit
+type URLVisitor struct {
+	URL *url.URL
+	*StreamVisitor
+  // 提供错误重试次数
+	HttpAttemptCount int
+}
+
+func (u *URLVisitor) Visit(fn VisitorFunc) error {}
