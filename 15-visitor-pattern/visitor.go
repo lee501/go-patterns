@@ -1,9 +1,8 @@
 package visitor
 
 import (
-	"fmt"
-	"url"
 	"io"
+	"net/url"
 )
 
 /*	允许一个或者多个操作应用到对象上，解耦操作和对象本身
@@ -13,6 +12,7 @@ import (
 		1. 对象Visitor interface
 		2. Vistor对应的操作VisitorFunc 
 		3. 封装多个vistor []Visitor为统一的一个
+
 */
 type Info struct {
 	// Namespace will be set if the object is namespaced and has a specified value.
@@ -49,7 +49,7 @@ func (l EagerVisitorList) Visit(fn VisitorFunc) error {
 			errs = append(errs, err)
 		}
 	}
-	return utilerrors.NewAggregate(errs)
+	return nil
 }
 
 type StreamVisitor struct {
@@ -60,7 +60,7 @@ type StreamVisitor struct {
 	Source string
 	//Schema ContentValidator
 }
-func (s *StreamVisitor) Visit(fn VisitorFunc) error {}
+func (s *StreamVisitor) Visit(fn VisitorFunc) error { return nil }
 // url visit
 type URLVisitor struct {
 	URL *url.URL
@@ -69,4 +69,4 @@ type URLVisitor struct {
 	HttpAttemptCount int
 }
 
-func (u *URLVisitor) Visit(fn VisitorFunc) error {}
+func (u *URLVisitor) Visit(fn VisitorFunc) error { return nil}
