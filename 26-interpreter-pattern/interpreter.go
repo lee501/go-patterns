@@ -1,66 +1,98 @@
 package interpreter
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 /*
-	设计思想：
-		1. 表达式接口 Expression interface
-		2. 具体的表达式类 ConcreteExpression struct
-		3. 上下文类 Context struct
+	使用解释器模式实现加减法
 */
-
-type Exp int
-
-const (
-	Equ = iota
-	Cont
-)
-/*创建Expression*/
+// 定义接口表达式
 type Expression interface {
-	Interpret() bool
+	Interpret() int
 }
 
-/*创建context结构， 用作需要解释的上下文信息*/
-type Context struct {
-	val string
+// 实现具体的类
+
+// 整数表达式
+type NumExpression struct {
+	val int
 }
 
-func (con *Context) GetVal() string {
-	return con.val
-}
-//Equal表达式类 implements expression
-type Equal struct {
-	left Context
-	right Context
+// 解析整数值
+func (n *NumExpression) Interpret() int {
+	return n.val
 }
 
-func (e *Equal) Interpret() bool {
-	return e.left.GetVal() == e.right.GetVal()
+// 加法表达式
+type AddExpression struct {
+	left, right Expression
 }
 
-//Contain表达式类, implements expression
-type Contain struct {
-	left Context
-	right Context
+// 解释-加法操作
+func (n *AddExpression) Interpret() int {
+	return n.left.Interpret() + n.right.Interpret()
 }
 
-func (con *Contain) Interpret() bool {
-	return strings.Contains(con.left.GetVal(), con.right.GetVal())
+// 减法表达式
+type SubExpression struct {
+	left, right Expression
 }
 
-func CreateExpression(exp Exp, left, right Context) Expression {
-	switch exp {
-	case Equ:
-		return &Equal{
-			left: left,
-			right: right,
+// 解释-减法操作
+func (n *SubExpression) Interpret() int {
+	return n.left.Interpret() - n.right.Interpret()
+}
+
+// 定义解析器
+type Parser struct {
+	exp   []string
+	index int //exp游标
+	prev  Expression
+}
+
+func (p *Parser) Parse(str string) {
+	p.exp = strings.Split(str, " ")
+	for {
+		if p.index >= len(p.exp) {
+			return
 		}
-	case Cont:
-		return &Contain{
-			left: left,
-			right: right,
+		switch p.exp[p.index] {
+		case "+":
+			p.prev = p.newAddExpression()
+		case "-":
+			p.prev = p.newSubExpression()
+		default:
+			p.prev = p.newNumExpression()
 		}
-	default:
-		return nil
 	}
+}
+
+func (p *Parser) newAddExpression() Expression {
+	p.index++
+	return &AddExpression{
+		left:  p.prev,
+		right: p.newNumExpression(),
+	}
+}
+
+func (p *Parser) newSubExpression() Expression {
+	p.index++
+	return &SubExpression{
+		left:  p.prev,
+		right: p.newNumExpression(),
+	}
+}
+
+func (p *Parser) newNumExpression() Expression {
+	v, _ := strconv.Atoi(p.exp[p.index])
+	p.index++
+	return &NumExpression{
+		val: v,
+	}
+}
+
+func (p *Parser) Result() Expression {
+	return p.prev
 }
