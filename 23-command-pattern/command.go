@@ -11,7 +11,7 @@ import "fmt"
 		*具体命令的结构体(ConcreteCommand)
 	Invoker负责维护Command队列
 	ConcreteCommand匿名组合Receiver
-	
+
 	协作过程：
 		1.创建一个ConcreteCommand对象并指定它的Receiver对象
 		2.某Invoker对象存储该ConcreteCommand对象
@@ -22,30 +22,32 @@ import "fmt"
 type Receiver interface {
 	Execute()
 }
-//创建具体的接收者，实现接口方法
-type ReceiverA struct {
 
+// 创建具体的接收者，实现接口方法
+type ReceiverA struct {
 }
+
 func (a *ReceiverA) Execute() {
 	fmt.Println("接收者A处理请求")
 }
 
 type ReceiverB struct {
-
 }
+
 func (b *ReceiverB) Execute() {
 	fmt.Println("接收者B处理请求")
 }
-
 
 /*创建Command接口*/
 type Command interface {
 	Call()
 }
-//创建具体command, 指定接收者
+
+// 创建具体command, 指定接收者
 type ConcreteCommandA struct {
 	Receiver
 }
+
 func (ca *ConcreteCommandA) Call() {
 	ca.Receiver.Execute()
 }
@@ -53,10 +55,10 @@ func (ca *ConcreteCommandA) Call() {
 type ConcreteCommandB struct {
 	Receiver
 }
+
 func (cb *ConcreteCommandB) Call() {
 	cb.Receiver.Execute()
 }
-
 
 /*创建请求对象， 维护请求cmd*/
 type Invoker struct {
@@ -67,11 +69,11 @@ func (in *Invoker) AddCommand(c Command) {
 	if in == nil {
 		return
 	}
-	in.cmds = append(in.list, c)
+	in.cmds = append(in.cmds, c)
 }
 
 func (in *Invoker) ExecuteCommand() {
-	if in  == nil || len(in.cmds) == 0 {
+	if in == nil || len(in.cmds) == 0 {
 		return
 	}
 	for _, cmd := range in.cmds {
@@ -79,13 +81,14 @@ func (in *Invoker) ExecuteCommand() {
 	}
 }
 
-//使用工厂方法模式来创建ConcreteCommand
+// 使用工厂方法模式来创建ConcreteCommand
 type TYPE string
 
 const (
 	Acommand TYPE = "a"
 	Bcommand TYPE = "b"
 )
+
 func CreateCommand(kind TYPE, receiver Receiver) Command {
 	switch kind {
 	case Acommand:
