@@ -60,7 +60,13 @@ type StreamVisitor struct {
 	Source string
 	//Schema ContentValidator
 }
-func (s *StreamVisitor) Visit(fn VisitorFunc) error { return nil }
+func (s *StreamVisitor) Visit(fn VisitorFunc) error {
+	info := &Info{
+		Namespace: s.Source,
+		Name:      s.Source,
+	}
+	return fn(info, nil)
+}
 // url visit
 type URLVisitor struct {
 	URL *url.URL
