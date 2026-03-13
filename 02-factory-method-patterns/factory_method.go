@@ -2,18 +2,10 @@ package factory
 
 import "errors"
 
-/*
-	factory method design pattern will create object with the exact type
-	设计思想：
-		*类型常量
-		*接口factory
-		*生成函数
-		*实现接口方法的struct
-*/
 type Kind int
 
 const (
-	Cash 	Kind = 1 << iota
+	Cash Kind = 1 << iota
 	Credit
 )
 
@@ -21,7 +13,7 @@ type Payment interface {
 	Pay(money float32) error
 }
 
-//实现两个struct,继承接口Payment
+// 实现两个struct,继承接口Payment
 type CashPay struct {
 	Balance float32
 }
@@ -45,7 +37,8 @@ func (credit *CreditPay) Pay(money float32) error {
 	credit.Balance -= money
 	return nil
 }
-//factory method pattern
+
+// factory method pattern
 func GeneratePayment(k Kind, balance float32) (Payment, error) {
 	switch k {
 	case Cash:

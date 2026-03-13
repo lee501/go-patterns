@@ -5,9 +5,6 @@ import (
 	"strings"
 )
 
-/*
-	使用解释器模式实现加减法
-*/
 // 定义接口表达式
 type Expression interface {
 	Interpret() int

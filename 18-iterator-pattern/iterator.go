@@ -2,14 +2,7 @@ package iterator
 
 import "fmt"
 
-/*
-	设计思想：
-		1. Iterator结构体
-			实现Next()  HasNext()方法
-		2. Container容器
-			容器实现添加 移除Visitor 和
-*/
-//创建迭代器
+// 创建迭代器
 type Iterator struct {
 	index int
 	Container
@@ -29,7 +22,7 @@ func (i *Iterator) HasNext() bool {
 	return true
 }
 
-//创建容器
+// 创建容器
 type Container struct {
 	list []Visitor
 }
@@ -44,15 +37,16 @@ func (c *Container) Remove(index int) {
 	}
 	c.list = append(c.list[:index], c.list[index+1:]...)
 }
-//创建Visitor接口
+
+// 创建Visitor接口
 type Visitor interface {
 	Visit()
 }
 
-//创建具体的visitor对象
-type Teacher struct {}
+// 创建具体的visitor对象
+type Teacher struct{}
 
-type Analysis struct {}
+type Analysis struct{}
 
 func (t *Teacher) Visit() {
 	fmt.Println("this is teacher visitor")
@@ -62,10 +56,10 @@ func (a *Analysis) Visit() {
 	fmt.Println("this is analysis visitor")
 }
 
-//工厂方法创建迭代器
+// 工厂方法创建迭代器
 func NewIterator() *Iterator {
 	return &Iterator{
-		index: 0,
+		index:     0,
 		Container: Container{},
 	}
 }
